@@ -20,24 +20,24 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-secondary transition-colors">
+                <Link to="/terms" className="hover:text-secondary transition-colors">
                   Terms and Conditions
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-secondary transition-colors">
+                <Link to="/refund-policy" className="hover:text-secondary transition-colors">
                   Refund Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-secondary transition-colors">
+                <Link to="/cancellation-policy" className="hover:text-secondary transition-colors">
                   Cancellation Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-secondary transition-colors">
+                <Link to="/promotion-terms" className="hover:text-secondary transition-colors">
                   Promotion Terms
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

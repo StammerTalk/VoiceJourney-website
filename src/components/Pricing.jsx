@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
 
@@ -27,88 +26,27 @@ const PricingCard = ({ title, price, features, popular, delay }) => {
             </li>
           ))}
         </ul>
-        <button className={`w-full py-2 rounded-md font-medium ${popular ? 'bg-secondary text-dark' : 'bg-primary text-white'}`}>
-          Purchase Now
-        </button>
+        <div className={`w-full py-2 text-center font-medium ${popular ? 'text-secondary' : 'text-primary'}`}>
+          Purchase in App
+        </div>
       </div>
     </motion.div>
   );
 };
 
 const Pricing = () => {
-  const [showBundle, setShowBundle] = useState(true);
-
-  const individualPacks = [
-    {
-      title: "Phone Call Pack",
-      price: "1.99",
-      features: [
-        "50 customizable templates",
-        "Different difficulty levels",
-        "Starter phrases included",
-        "Instructions for each scenario",
-        "Progress tracking"
-      ]
-    },
-    {
-      title: "Ordering Pack",
-      price: "1.99",
-      features: [
-        "50 customizable templates",
-        "Different difficulty levels",
-        "Starter phrases included",
-        "Instructions for each scenario",
-        "Progress tracking"
-      ]
-    },
-    {
-      title: "Presentation Pack",
-      price: "1.99",
-      features: [
-        "50 customizable templates",
-        "Different difficulty levels",
-        "Starter phrases included",
-        "Instructions for each scenario",
-        "Progress tracking"
-      ]
-    }
-  ];
-
-  const otherPacks = [
-    {
-      title: "Conversation Pack",
-      price: "1.99",
-      features: [
-        "50 customizable templates",
-        "Different difficulty levels",
-        "Starter phrases included",
-        "Instructions for each scenario",
-        "Progress tracking"
-      ]
-    },
-    {
-      title: "Meeting Pack",
-      price: "1.99",
-      features: [
-        "50 customizable templates",
-        "Different difficulty levels",
-        "Starter phrases included",
-        "Instructions for each scenario",
-        "Progress tracking"
-      ]
-    },
-    {
-      title: "Introduction Pack",
-      price: "1.99",
-      features: [
-        "50 customizable templates",
-        "Different difficulty levels",
-        "Starter phrases included",
-        "Instructions for each scenario",
-        "Progress tracking"
-      ]
-    }
-  ];
+  const individualPack = {
+    title: "Individual Pack",
+    price: "1.99",
+    features: [
+      "50 customizable templates per pack",
+      "Different difficulty levels",
+      "Starter phrases included",
+      "Instructions for each scenario",
+      "Progress tracking",
+      "6 packs available: Phone Call, Ordering, Presentation, Conversation, Meeting, Introduction"
+    ]
+  };
 
   const bundle = {
     title: "Complete Bundle",
@@ -116,9 +54,11 @@ const Pricing = () => {
     features: [
       "All 6 template packs included",
       "300 customizable templates total",
+      "Different difficulty levels",
+      "Starter phrases included",
+      "Instructions for each scenario",
+      "Progress tracking",
       "Save $3.95 compared to individual packs",
-      "Free updates for new templates",
-      "Priority support"
     ]
   };
 
@@ -137,59 +77,24 @@ const Pricing = () => {
           <p className="text-medium mb-6">
             Choose individual template packs or get the complete bundle for the best value.
           </p>
-          
-          <div className="flex justify-center space-x-4 mb-8">
-            <button 
-              className={`px-6 py-2 rounded-md ${showBundle ? 'bg-secondary text-dark' : 'bg-gray-200'}`}
-              onClick={() => setShowBundle(true)}
-            >
-              Bundle
-            </button>
-            <button 
-              className={`px-6 py-2 rounded-md ${!showBundle ? 'bg-secondary text-dark' : 'bg-gray-200'}`}
-              onClick={() => setShowBundle(false)}
-            >
-              Individual Packs
-            </button>
-          </div>
         </motion.div>
 
-        {showBundle ? (
-          <div className="flex justify-center">
-            <div className="max-w-md w-full">
-              <PricingCard 
-                title={bundle.title}
-                price={bundle.price}
-                features={bundle.features}
-                popular={true}
-                delay={0.1}
-              />
-            </div>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {individualPacks.map((pack, index) => (
-              <PricingCard 
-                key={index}
-                title={pack.title}
-                price={pack.price}
-                features={pack.features}
-                popular={false}
-                delay={index * 0.1}
-              />
-            ))}
-            {otherPacks.map((pack, index) => (
-              <PricingCard 
-                key={index}
-                title={pack.title}
-                price={pack.price}
-                features={pack.features}
-                popular={false}
-                delay={(index + 3) * 0.1}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <PricingCard 
+            title={individualPack.title}
+            price={individualPack.price}
+            features={individualPack.features}
+            popular={false}
+            delay={0.1}
+          />
+          <PricingCard 
+            title={bundle.title}
+            price={bundle.price}
+            features={bundle.features}
+            popular={true}
+            delay={0.2}
+          />
+        </div>
       </div>
     </section>
   );

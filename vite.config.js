@@ -7,5 +7,11 @@ export default defineConfig({
   base: '/', // Set the base path to match your GitHub repository name
   build: {
     outDir: 'dist',
+    // Add 404.html that redirects to index.html for client-side routing support
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
 })
