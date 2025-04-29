@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/VoiceJourney-website/', // Set the base path to match your GitHub repository name
+  base: '/', // Set the base path to match your GitHub repository name
   build: {
     outDir: 'dist',
   },
