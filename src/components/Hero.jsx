@@ -21,15 +21,15 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4">
               <button className="btn btn-primary flex items-center gap-2">
                 <FaApple className="text-lg" />
-                <span>Download for iOS</span>
+                <span>iOS (Coming soon)</span>
               </button>
               <button className="btn btn-primary flex items-center gap-2">
                 <FaAndroid className="text-lg" />
-                <span>Download for Android</span>
+                <span>Android (Coming soon)</span>
               </button>
               <button className="btn btn-secondary flex items-center gap-2">
                 <FaGlobe className="text-lg" />
-                <span>Try Web Version</span>
+                <span>Web (Coming soon)</span>
               </button>
             </div>
           </motion.div>
@@ -43,7 +43,7 @@ const Hero = () => {
             {/* App mockup image - recommended size 320px × 650px (640px × 1300px for retina) */}
             <div className="w-[320px] h-[650px] bg-gray-200 rounded-3xl shadow-xl flex items-center justify-center text-gray-400 overflow-hidden">
               <img 
-                src="/assets/mockups/app_mockup.png" 
+                src="/assets/mockups/vj_tasks.png" 
                 alt="Voice Journey App Mockup" 
                 className="w-full h-full object-cover"
                 onError={(e) => {

@@ -53,7 +53,7 @@ const RefundPolicy = () => {
           </a>
         </p>
         
-        <p className="mt-8 text-sm text-light">Last Updated: July 2023</p>
+        <p className="mt-8 text-sm text-light">Last Updated: April 2025</p>
       </div>
     </div>
   );

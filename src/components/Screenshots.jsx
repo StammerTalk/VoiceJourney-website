@@ -9,19 +9,19 @@ const Screenshots = () => {
   // Screenshot data - will use images from the /public/assets/screenshots folder
   const screenshots = [
     {
-      src: "/assets/screenshots/screenshot1.png",
+      src: "/assets/screenshots/tasks.png",
       alt: "Voice Journey App - Home Screen",
       caption: "Home screen with daily challenges",
       fallbackText: "Voice Journey Screenshot 1"
     },
     {
-      src: "/assets/screenshots/screenshot2.png",
+      src: "/assets/screenshots/task_details.png",
       alt: "Voice Journey App - Task Details",
       caption: "Detailed task view with instructions",
       fallbackText: "Voice Journey Screenshot 2"
     },
     {
-      src: "/assets/screenshots/screenshot3.png",
+      src: "/assets/screenshots/progress_tracking.png",
       alt: "Voice Journey App - Progress Tracking",
       caption: "Track your speaking confidence progress",
       fallbackText: "Voice Journey Screenshot 3"
