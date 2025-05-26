@@ -19,18 +19,23 @@ const Hero = () => {
               Build Speaking Confidence, One Challenge at a Time.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="btn btn-primary flex items-center gap-2">
+              {/* <button className="btn btn-primary flex items-center gap-2">
                 <FaApple className="text-lg" />
                 <span>iOS (Coming soon)</span>
               </button>
               <button className="btn btn-primary flex items-center gap-2">
                 <FaAndroid className="text-lg" />
                 <span>Android (Coming soon)</span>
-              </button>
-              <button className="btn btn-secondary flex items-center gap-2">
+              </button> */}
+              <a 
+                href="https://app.voicejourneyapp.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn btn-secondary flex items-center gap-2"
+              >
                 <FaGlobe className="text-lg" />
-                <span>Web (Coming soon)</span>
-              </button>
+                <span>Web (Preview)</span>
+              </a>
             </div>
           </motion.div>
           

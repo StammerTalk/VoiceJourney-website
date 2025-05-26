@@ -39,7 +39,7 @@ const Pricing = () => {
     title: "Individual Pack",
     price: "1.99",
     features: [
-      "50 customizable templates per pack",
+      "30 customizable templates per pack",
       "Different difficulty levels",
       "Starter phrases included",
       "Instructions for each scenario",
@@ -53,7 +53,7 @@ const Pricing = () => {
     price: "8.99",
     features: [
       "All 6 template packs included",
-      "300 customizable templates total",
+      "180 customizable templates total",
       "Different difficulty levels",
       "Starter phrases included",
       "Instructions for each scenario",
