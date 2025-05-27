@@ -47,7 +47,7 @@ const Header = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="block md:hidden text-dark" onClick={toggleMenu}>
+        <button className="block md:hidden text-dark z-50 relative" onClick={toggleMenu}>
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
@@ -55,7 +55,7 @@ const Header = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <motion.nav 
-          className="fixed inset-0 z-40 flex items-center justify-center bg-white"
+          className="fixed inset-0 z-40 flex items-center justify-center bg-white pt-20"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
