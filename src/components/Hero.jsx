@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaApple, FaAndroid, FaGlobe, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaApple, FaAndroid, FaGlobe } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
@@ -34,18 +34,78 @@ const Hero = () => {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [swipeDirection, setSwipeDirection] = useState(0); // -1 for left, 1 for right
 
   // Navigation functions
   const goToPrevious = () => {
+    setSwipeDirection(-1);
     setCurrentImageIndex((prevIndex) => 
       prevIndex === 0 ? mockupImages.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
+    setSwipeDirection(1);
     setCurrentImageIndex((prevIndex) => 
       prevIndex === mockupImages.length - 1 ? 0 : prevIndex + 1
     );
+  };
+
+  // Swipe detection
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      goToNext();
+    } else if (isRightSwipe) {
+      goToPrevious();
+    }
+  };
+
+  // Mouse drag events for desktop
+  const onMouseDown = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.clientX);
+  };
+
+  const onMouseMove = (e) => {
+    if (touchStart !== null) {
+      setTouchEnd(e.clientX);
+    }
+  };
+
+  const onMouseUp = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      goToNext();
+    } else if (isRightSwipe) {
+      goToPrevious();
+    }
+    
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   // Auto-scroll functionality
@@ -53,6 +113,7 @@ const Hero = () => {
     if (isPaused) return;
     
     const interval = setInterval(() => {
+      setSwipeDirection(1);
       setCurrentImageIndex((prevIndex) => 
         prevIndex === mockupImages.length - 1 ? 0 : prevIndex + 1
       );
@@ -92,7 +153,7 @@ const Hero = () => {
                 className="btn btn-secondary flex items-center gap-2"
               >
                 <FaGlobe className="text-lg" />
-                <span>Web (Preview)</span>
+                <span>Start Your Journey - Free</span>
               </a>
             </div>
           </motion.div>
@@ -105,41 +166,45 @@ const Hero = () => {
           >
             {/* App mockup carousel container */}
             <div 
-              className="relative w-[320px] h-[650px] bg-gray-200 rounded-3xl shadow-xl overflow-hidden group"
+              className="relative w-[320px] h-[650px] bg-gray-200 rounded-3xl shadow-xl overflow-hidden cursor-grab active:cursor-grabbing select-none"
               onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={() => {
+                setIsPaused(false);
+                onMouseUp();
+              }}
             >
-              {/* Left Navigation Button */}
-              <button
-                onClick={goToPrevious}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                aria-label="Previous image"
-              >
-                <FaChevronLeft className="text-sm" />
-              </button>
-
-              {/* Right Navigation Button */}
-              <button
-                onClick={goToNext}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                aria-label="Next image"
-              >
-                <FaChevronRight className="text-sm" />
-              </button>
-
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" custom={swipeDirection}>
                 <motion.div
                   key={currentImageIndex}
                   className="relative w-full h-full"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  custom={swipeDirection}
+                  initial={(direction) => ({
+                    x: direction > 0 ? 300 : -300,
+                    opacity: 0
+                  })}
+                  animate={{
+                    x: 0,
+                    opacity: 1
+                  }}
+                  exit={(direction) => ({
+                    x: direction > 0 ? -300 : 300,
+                    opacity: 0
+                  })}
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
+                  }}
                 >
                   <img
                     src={mockupImages[currentImageIndex].src}
                     alt={mockupImages[currentImageIndex].alt}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain pointer-events-none"
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.style.display = 'none';
@@ -148,7 +213,7 @@ const Hero = () => {
                   />
                   
                   {/* Caption overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pointer-events-none">
                     <p className="text-white text-sm font-medium text-center">
                       {mockupImages[currentImageIndex].caption}
                     </p>

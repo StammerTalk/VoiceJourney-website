@@ -41,7 +41,7 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
-            <li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>
+            {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
         </nav>
@@ -64,7 +64,7 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
-            <li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>
+            {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
         </motion.nav>

@@ -52,7 +52,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="hover:text-secondary transition-colors"
                 >
-                  Web (Preview)
+                  Web
                 </a>
               </li>
             </ul>

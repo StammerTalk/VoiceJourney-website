@@ -26,7 +26,16 @@ const PricingCard = ({ title, price, features, popular, delay, isFree }) => {
             </li>
           ))}
         </ul>
-        {!isFree && (
+        {isFree ? (
+          <a 
+            href="https://app.voicejourneyapp.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block w-full bg-primary text-white py-3 text-center font-medium rounded-lg hover:bg-primary/90 transition-colors duration-200"
+          >
+            Start Your Journey
+          </a>
+        ) : (
           <div className={`w-full py-2 text-center font-medium ${popular ? 'text-secondary' : 'text-primary'}`}>
             Includes all Free features + Purchase in App
           </div>

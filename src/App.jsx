@@ -25,7 +25,7 @@ function App() {
               <About />
               <Features />
               <Pricing />
-              <Screenshots />
+              {/*<Screenshots />*/}
               <Contact />
             </main>
             <Footer />
