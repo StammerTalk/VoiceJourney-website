@@ -43,16 +43,17 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Download</h3>
+            <h3 className="text-xl font-bold mb-4">Try Voice Journey</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-secondary transition-colors">iOS App</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-secondary transition-colors">Android App</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-secondary transition-colors">Web Version</a>
+                <a 
+                  href="https://app.voicejourneyapp.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary transition-colors"
+                >
+                  Web (Preview)
+                </a>
               </li>
             </ul>
           </div>

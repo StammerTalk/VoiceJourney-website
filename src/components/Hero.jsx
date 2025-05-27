@@ -4,7 +4,7 @@ import { FaApple, FaAndroid, FaGlobe } from 'react-icons/fa';
 const Hero = () => {
   return (
     <section className="relative bg-gradient-to-br from-primary/10 to-white py-20 md:py-24 lg:py-32">
-      <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <motion.div 
             className="md:w-1/2"

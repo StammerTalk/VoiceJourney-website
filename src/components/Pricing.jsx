@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
 
-const PricingCard = ({ title, price, features, popular, delay }) => {
+const PricingCard = ({ title, price, features, popular, delay, isFree }) => {
   return (
     <motion.div 
       className={`bg-white rounded-lg shadow-md overflow-hidden ${popular ? 'border-2 border-secondary' : ''}`}
@@ -26,15 +26,29 @@ const PricingCard = ({ title, price, features, popular, delay }) => {
             </li>
           ))}
         </ul>
-        <div className={`w-full py-2 text-center font-medium ${popular ? 'text-secondary' : 'text-primary'}`}>
-          Purchase in App
-        </div>
+        {!isFree && (
+          <div className={`w-full py-2 text-center font-medium ${popular ? 'text-secondary' : 'text-primary'}`}>
+            Includes all Free features + Purchase in App
+          </div>
+        )}
       </div>
     </motion.div>
   );
 };
 
 const Pricing = () => {
+  const freePlan = {
+    title: "Free",
+    price: "0",
+    features: [
+      "Create your own custom tasks",
+      "Create your own reports",
+      "Progress tracking",
+      "18 basic task templates",
+      "Phone Call, Ordering, Presentation, Conversation, Meeting, Introduction task types",
+    ]
+  };
+
   const individualPack = {
     title: "Individual Pack",
     price: "1.99",
@@ -79,20 +93,30 @@ const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <PricingCard 
+            title={freePlan.title}
+            price={freePlan.price}
+            features={freePlan.features}
+            popular={false}
+            delay={0.1}
+            isFree={true}
+          />
           <PricingCard 
             title={individualPack.title}
             price={individualPack.price}
             features={individualPack.features}
             popular={false}
-            delay={0.1}
+            delay={0.2}
+            isFree={false}
           />
           <PricingCard 
             title={bundle.title}
             price={bundle.price}
             features={bundle.features}
             popular={true}
-            delay={0.2}
+            delay={0.3}
+            isFree={false}
           />
         </div>
       </div>

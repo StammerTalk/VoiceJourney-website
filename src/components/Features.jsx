@@ -38,12 +38,12 @@ const Features = () => {
       icon: <FaChartLine />,
       title: 'Track Your Progress',
       description: 'Rate your experience, reflect on your performance, and watch your confidence grow over time.'
-    },
-    {
-      icon: <FaWifi />,
-      title: 'Offline Access',
-      description: 'Use the app anywhere, even without an internet connection.'
     }
+    // {
+    //   icon: <FaWifi />,
+    //   title: 'Offline Access',
+    //   description: 'Use the app anywhere, even without an internet connection.'
+    // }
   ];
 
   return (
@@ -63,7 +63,7 @@ const Features = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {features.map((feature, index) => (
             <FeatureCard 
               key={index}

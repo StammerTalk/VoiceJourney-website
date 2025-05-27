@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const About = () => {
   return (
     <section id="about" className="section bg-off-white">
-      <div className="container">
+      <div className="max-w-6xl mx-auto px-4">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -30,8 +30,9 @@ const About = () => {
             
             <h3 className="text-2xl font-bold mb-4 mt-8">Our Solution</h3>
             <p className="mb-4">
-              Voice Journey provides structured daily speaking challenges that help you gradually build confidence 
-              and improve communication skills.
+              Voice Journey provides ready-to-use challenge templates and tools to design custom speaking scenarios 
+              tailored to your comfort level. Track your progress through detailed reports that help you reflect 
+              on performance and celebrate improvements.
             </p>
           </motion.div>
 
