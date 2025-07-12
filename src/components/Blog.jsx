@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import BlogCard from './BlogCard';
 import { getLatestBlogPosts } from '../utils/mdx';
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
@@ -69,7 +71,7 @@ const Blog = () => {
                 className="btn btn-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/blog'}
+                onClick={() => navigate('/blog')}
               >
                 View All Articles
               </motion.button>

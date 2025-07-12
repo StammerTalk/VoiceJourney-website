@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaUser, FaCalendar, FaClock, FaShare } from 'react-icons/fa';
 import Header from '../components/Header';
@@ -8,6 +8,7 @@ import { getBlogPostBySlug, formatDate } from '../utils/mdx';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [blogPost, setBlogPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,7 +34,7 @@ const BlogPostPage = () => {
   }, [slug]);
 
   const handleBack = () => {
-    window.history.back();
+    navigate(-1); // Go back to previous page
   };
 
   const handleShare = () => {

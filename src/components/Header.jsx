@@ -1,24 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Handle scrolling to sections when hash changes
+  useEffect(() => {
+    if (location.hash && location.pathname === '/') {
+      const sectionId = location.hash.substring(1); // Remove the # symbol
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Small delay to ensure the page has loaded
+    }
+  }, [location.hash, location.pathname]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+    setIsOpen(false);
+    
+    // Check if we're on the homepage
+    if (location.pathname === '/') {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to homepage with hash
+      navigate(`/#${sectionId}`);
     }
   };
 
   const navigateToPage = (path) => {
-    window.location.href = path;
+    navigate(path);
+    setIsOpen(false);
+  };
+
+  const navigateToHome = () => {
+    navigate('/');
     setIsOpen(false);
   };
 
@@ -27,7 +55,7 @@ const Header = () => {
       <div className="container flex items-center justify-between py-4">
         <div className="flex items-center">
           {/* Logo with fallback to text if image is missing */}
-          <div className="flex items-center">
+          <div className="flex items-center cursor-pointer" onClick={navigateToHome}>
             <img 
               src="/assets/logos/navi.png" 
               alt="Voice Journey Logo" 
@@ -46,7 +74,7 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
-            <li><button onClick={() => navigateToPage('/blog')} className="font-medium hover:text-primary">Blog</button></li>
+            <li><button onClick={() => scrollToSection('blog')} className="font-medium hover:text-primary">Blog</button></li>
             {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
@@ -70,7 +98,7 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
-            <li><button onClick={() => navigateToPage('/blog')} className="font-medium hover:text-primary">Blog</button></li>
+            <li><button onClick={() => scrollToSection('blog')} className="font-medium hover:text-primary">Blog</button></li>
             {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
