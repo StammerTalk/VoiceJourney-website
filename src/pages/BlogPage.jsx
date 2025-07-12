@@ -29,6 +29,11 @@ const BlogPage = () => {
     fetchBlogPosts();
   }, []);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     let filtered = blogPosts;
 

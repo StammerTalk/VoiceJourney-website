@@ -33,6 +33,11 @@ const BlogPostPage = () => {
     fetchBlogPost();
   }, [slug]);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleBack = () => {
     navigate(-1); // Go back to previous page
   };
