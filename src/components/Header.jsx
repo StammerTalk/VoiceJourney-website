@@ -17,6 +17,11 @@ const Header = () => {
     }
   };
 
+  const navigateToPage = (path) => {
+    window.location.href = path;
+    setIsOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="container flex items-center justify-between py-4">
@@ -41,6 +46,7 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
+            <li><button onClick={() => navigateToPage('/blog')} className="font-medium hover:text-primary">Blog</button></li>
             {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
@@ -64,6 +70,7 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
+            <li><button onClick={() => navigateToPage('/blog')} className="font-medium hover:text-primary">Blog</button></li>
             {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
