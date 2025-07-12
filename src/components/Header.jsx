@@ -28,6 +28,11 @@ const Header = () => {
   const scrollToSection = (sectionId) => {
     setIsOpen(false);
     
+    // Don't navigate if we're trying to go to blog section and we're already on blog page
+    if (sectionId === 'blog' && (location.pathname === '/blog' || location.pathname.startsWith('/blog/'))) {
+      return; // Do nothing if already on blog pages
+    }
+    
     // Check if we're on the homepage
     if (location.pathname === '/') {
       const section = document.getElementById(sectionId);
@@ -74,7 +79,19 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
-            <li><button onClick={() => scrollToSection('blog')} className="font-medium hover:text-primary">Blog</button></li>
+            <li>
+              <button 
+                onClick={() => scrollToSection('blog')} 
+                className={`font-medium transition-colors ${
+                  location.pathname === '/blog' || location.pathname.startsWith('/blog/') 
+                    ? 'text-primary cursor-default' 
+                    : 'hover:text-primary'
+                }`}
+                disabled={location.pathname === '/blog' || location.pathname.startsWith('/blog/')}
+              >
+                Blog {(location.pathname === '/blog' || location.pathname.startsWith('/blog/')) && '(Current)'}
+              </button>
+            </li>
             {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
@@ -98,7 +115,19 @@ const Header = () => {
             <li><button onClick={() => scrollToSection('about')} className="font-medium hover:text-primary">About</button></li>
             <li><button onClick={() => scrollToSection('features')} className="font-medium hover:text-primary">Features</button></li>
             <li><button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-primary">Pricing</button></li>
-            <li><button onClick={() => scrollToSection('blog')} className="font-medium hover:text-primary">Blog</button></li>
+            <li>
+              <button 
+                onClick={() => scrollToSection('blog')} 
+                className={`font-medium transition-colors ${
+                  location.pathname === '/blog' || location.pathname.startsWith('/blog/') 
+                    ? 'text-primary cursor-default' 
+                    : 'hover:text-primary'
+                }`}
+                disabled={location.pathname === '/blog' || location.pathname.startsWith('/blog/')}
+              >
+                Blog {(location.pathname === '/blog' || location.pathname.startsWith('/blog/')) && '(Current)'}
+              </button>
+            </li>
             {/*<li><button onClick={() => scrollToSection('screenshots')} className="font-medium hover:text-primary">Screenshots</button></li>*/}
             <li><button onClick={() => scrollToSection('contact')} className="font-medium hover:text-primary">Contact</button></li>
           </ul>
