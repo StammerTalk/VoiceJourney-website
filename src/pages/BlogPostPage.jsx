@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaArrowLeft, FaUser, FaCalendar, FaClock, FaShare } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import BlogContentRenderer from '../components/BlogContentRenderer';
 import { getBlogPostBySlug, formatDate } from '../utils/mdx';
 
 const BlogPostPage = () => {
@@ -160,38 +161,9 @@ const BlogPostPage = () => {
               </div>
             </header>
             
-            <img
-              src={blogPost.image}
-              alt={blogPost.title}
-              className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%23f3f4f6"/><text x="400" y="200" text-anchor="middle" dy=".3em" fill="%239ca3af" font-family="Arial" font-size="24">Blog Post Image</text></svg>`;
-              }}
-            />
-            
-            {/* Blog content will be rendered here */}
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {blogPost.excerpt}
-              </p>
-              <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-                <p className="text-center text-gray-600">
-                  <strong>Note:</strong> This is a sample blog post. In a full implementation, 
-                  the complete MDX content would be rendered here with all formatting, 
-                  images, and interactive components.
-                </p>
-                <div className="mt-4 text-center">
-                  <a 
-                    href="https://app.voicejourneyapp.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="btn btn-primary"
-                  >
-                    Try Voice Journey Today
-                  </a>
-                </div>
-              </div>
+            {/* Blog content */}
+            <div className="mb-8">
+              <BlogContentRenderer MDXComponent={blogPost.MDXComponent} />
             </div>
             
             <div className="mt-12 pt-8 border-t border-gray-200">

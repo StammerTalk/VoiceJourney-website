@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { MDXProvider } from '@mdx-js/react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -9,6 +10,7 @@ import Screenshots from './components/Screenshots'
 import Blog from './components/Blog'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import MDXComponents from './components/MDXComponents'
 import TermsAndConditions from './pages/TermsAndConditions'
 import RefundPolicy from './pages/RefundPolicy'
 import CancellationPolicy from './pages/CancellationPolicy'
@@ -18,7 +20,8 @@ import BlogPostPage from './pages/BlogPostPage'
 
 function App() {
   return (
-    <Router>
+    <MDXProvider components={MDXComponents}>
+      <Router>
       <Routes>
         <Route path="/" element={
           <>
@@ -43,6 +46,7 @@ function App() {
         <Route path="/blog/:slug" element={<BlogPostPage />} />
       </Routes>
     </Router>
+    </MDXProvider>
   )
 }
 

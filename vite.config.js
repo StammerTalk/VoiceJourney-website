@@ -10,7 +10,8 @@ export default defineConfig({
     react(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-      rehypePlugins: []
+      rehypePlugins: [],
+      providerImportSource: "@mdx-js/react"
     })
   ],
   base: '/', // Set the base path to match your GitHub repository name

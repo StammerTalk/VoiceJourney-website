@@ -33,4 +33,11 @@
   .btn-accent {
     @apply bg-accent text-white hover:bg-opacity-90;
   }
+  
+  /* Force white text on CTA buttons */
+  .cta-button,
+  .cta-button * {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+  }
 }
