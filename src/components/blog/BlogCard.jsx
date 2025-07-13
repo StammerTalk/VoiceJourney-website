@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaUser, FaCalendar, FaClock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { formatDate } from '../utils/mdx';
+import { formatDate } from '../../utils/mdx';
 
 const BlogCard = ({ post, index = 0 }) => {
   const navigate = useNavigate();

@@ -20,7 +20,7 @@ export const getAllBlogPosts = async () => {
       slug: 'overcome-speaking-anxiety-small-challenges',
       title: 'Overcome Speaking Anxiety with Small Challenges - Build Big Confidence!',
       excerpt: 'Transform overwhelming speaking tasks into simple, manageable steps. Learn how Voice Journey\'s structured approach helps you build discipline and gain confidence to speak up.',
-      date: '2025-01-16',
+      date: '2025-06-15',
       category: 'How-To Guide',
       author: 'Voice Journey Team',
       readTime: '3 min read',
