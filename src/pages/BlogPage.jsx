@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaSearch } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BlogCard from '../components/BlogCard';
+import BlogCard from '../components/blog/BlogCard';
 import { getAllBlogPosts } from '../utils/mdx';
 
 const BlogPage = () => {

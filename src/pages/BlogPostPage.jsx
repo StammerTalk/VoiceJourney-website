@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FaArrowLeft, FaUser, FaCalendar, FaClock, FaShare } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BlogContentRenderer from '../components/BlogContentRenderer';
+import BlogContentRenderer from '../components/blog/BlogContentRenderer';
 import { getBlogPostBySlug, formatDate } from '../utils/mdx';
 
 const BlogPostPage = () => {
