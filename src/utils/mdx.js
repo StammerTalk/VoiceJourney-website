@@ -17,6 +17,17 @@ export const getAllBlogPosts = async () => {
   // This will be dynamically populated with blog posts
   const posts = [
     {
+      slug: 'practice-helped-overcome-social-anxiety',
+      title: 'The Practice That Helped Me Overcome Social Anxiety',
+      excerpt: 'From avoiding simple coffee orders to confidently engaging with baristas - discover how structured practice transformed overwhelming social anxiety into manageable confidence.',
+      date: '2025-06-24',
+      category: 'Personal Stories',
+      author: 'Voice Journey Team',
+      readTime: '4 min read',
+      image: '/assets/blog/social-anxiety-practice.jpg',
+      keywords: ['social anxiety', 'practice', 'confidence', 'voice journey app', 'coffee ordering']
+    },
+    {
       slug: 'overcome-speaking-anxiety-small-challenges',
       title: 'Overcome Speaking Anxiety with Small Challenges - Build Big Confidence!',
       excerpt: 'Transform overwhelming speaking tasks into simple, manageable steps. Learn how Voice Journey\'s structured approach helps you build discipline and gain confidence to speak up.',
