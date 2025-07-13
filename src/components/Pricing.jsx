@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
+import { trackClick, trackOutboundLink } from '../utils/analytics';
 
 const PricingCard = ({ title, price, features, popular, delay, isFree }) => {
+  const handleCTAClick = () => {
+    trackClick('cta_button', `pricing_${title.toLowerCase().replace(' ', '_')}`);
+    if (isFree) {
+      trackOutboundLink('https://app.voicejourneyapp.com');
+    }
+  };
+
   return (
     <motion.div 
       className={`bg-white rounded-lg shadow-md overflow-hidden ${popular ? 'border-2 border-secondary' : ''}`}
@@ -32,6 +40,7 @@ const PricingCard = ({ title, price, features, popular, delay, isFree }) => {
             target="_blank" 
             rel="noopener noreferrer"
             className="block w-full bg-primary text-white py-3 text-center font-medium rounded-lg hover:bg-primary/90 transition-colors duration-200"
+            onClick={handleCTAClick}
           >
             Start Your Journey
           </a>

@@ -10,6 +10,8 @@ import Screenshots from './components/Screenshots'
 import Blog from './components/Blog'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import GoogleAnalytics from './components/GoogleAnalytics'
+import ScrollTracker from './components/ScrollTracker'
 import MDXComponents from './components/blog/MDXComponents'
 import TermsAndConditions from './pages/TermsAndConditions'
 import RefundPolicy from './pages/RefundPolicy'
@@ -22,7 +24,9 @@ function App() {
   return (
     <MDXProvider components={MDXComponents}>
       <Router>
-      <Routes>
+        <GoogleAnalytics />
+        <ScrollTracker />
+        <Routes>
         <Route path="/" element={
           <>
             <Header />

@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import { FaEnvelope } from 'react-icons/fa';
+import { trackClick, trackOutboundLink } from '../utils/analytics';
 
 const Contact = () => {
+  const handleEmailClick = () => {
+    trackClick('email_link', 'contact_section');
+    trackOutboundLink('mailto:contact@voicejourneyapp.com');
+  };
+
   return (
     <section id="contact" className="section bg-off-white">
       <div className="container">
@@ -39,6 +45,7 @@ const Contact = () => {
               <a 
                 href="mailto:contact@voicejourneyapp.com"
                 className="inline-block btn btn-primary"
+                onClick={handleEmailClick}
               >
                 contact@voicejourneyapp.com
               </a>
