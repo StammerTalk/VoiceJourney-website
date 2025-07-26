@@ -17,6 +17,17 @@ export const getAllBlogPosts = async () => {
   // This will be dynamically populated with blog posts
   const posts = [
     {
+      slug: 'conquer-public-speaking-anxiety-deliberate-practice',
+      title: 'How to Conquer Public Speaking Anxiety with Deliberate Practice',
+      excerpt: 'Stop relying on quick fixes for presentation nerves. Learn the long-term strategy of deliberate practice that builds lasting confidence and transforms anxiety into excitement.',
+      date: '2025-07-26',
+      category: 'Speaking Tips',
+      author: 'Voice Journey Team',
+      readTime: '5 min read',
+      image: '/assets/blog/conquer-public-speaking-anxiety.png',
+      keywords: ['public speaking anxiety', 'deliberate practice', 'presentation nerves', 'voice journey app', 'confidence building']
+    },
+    {
       slug: 'practice-helped-overcome-social-anxiety',
       title: 'The Practice That Helped Me Overcome Social Anxiety',
       excerpt: 'From avoiding simple coffee orders to confidently engaging with baristas - discover how structured practice transformed overwhelming social anxiety into manageable confidence.',
