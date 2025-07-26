@@ -17,6 +17,17 @@ export const getAllBlogPosts = async () => {
   // This will be dynamically populated with blog posts
   const posts = [
     {
+      slug: 'unblocked-book',
+      title: 'Transform Your Relationship with Stuttering: Introducing \'Unblocked\'',
+      excerpt: 'Discover the groundbreaking book that bridges the gap between \'no cure\' and false promises. Learn how Avoidance Reduction Therapy can help you move from fear-based to fearless communication.',
+      date: '2025-07-26',
+      category: 'Resources',
+      author: 'Voice Journey Team',
+      readTime: '6 min read',
+      image: '/assets/blog/unblocked-book.png',
+      keywords: ['stuttering', 'avoidance reduction therapy', 'ART', 'unblocked book', 'fear-free communication', 'voice journey']
+    },
+    {
       slug: 'conquer-public-speaking-anxiety-deliberate-practice',
       title: 'How to Conquer Public Speaking Anxiety with Deliberate Practice',
       excerpt: 'Stop relying on quick fixes for presentation nerves. Learn the long-term strategy of deliberate practice that builds lasting confidence and transforms anxiety into excitement.',
